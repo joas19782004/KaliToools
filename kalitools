@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Define folder paths
+tools_dir="$HOME/tools"
+wordlists_dir="$tools_dir/wordlists"
+enum_dir="$tools_dir/enumeration"
+exploitdb_dir="$enum_dir/exploitdb"
+nmap_scripts_dir="$enum_dir/nmap-scripts"
+
+# Create folders (with parents if necessary)
+mkdir -p "$tools_dir" "$wordlists_dir" "$enum_dir" "$exploitdb_dir" "$nmap_scripts_dir"
+
+# Download tools (replace 'tool_name' and 'download_url' with actual tool and URL)
+download_tool () {
+  tool_name="$1"
+  download_url="$2"
+  filename=$(basename "$download_url")
+  download_dir=$(dirname "$2")
+
+  echo "Downloading $tool_name..."
+  wget -q -O "$download_dir/$filename" "$download_url"
+  if [ $? -eq 0 ]; then
+    echo "  $tool_name downloaded successfully."
+  else
+    echo "  Failed to download $tool_name."
+  fi
+}
+
+
+
+
